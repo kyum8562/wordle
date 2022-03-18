@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        input {
+            width : 50px;
+            height : 50px;
+            font-size : 40px;
+            text-align : center;
+        }
+    </style>
+    <input class="input">
+    <input class="input">
+    <input class="input">
+    <input class="input">
+    <input class="input">
+    <button>제출</button>
+
+    <script>
+        var result = 'abcde';
+        document.querySelector('button').addEventListener('click',
+        function(){
+            var input = document.querySelectorAll('.input');
+            for(var i = 0 ; i < input.length ; i ++){
+                if(input[i].value == result[i]){
+                    input[i].style.background = 'green';
+                }
+                else if(result.includes(input[i].value)){
+                    input[i].style.background = 'yellow';
+                }
+                else{
+                    input[i].style.background = 'lightgrey';
+                }
+
+                input[i].classList.remove('input');
+            }
+
+            var template = `<div>
+                <input class="input">
+                <input class="input">
+                <input class="input">
+                <input class="input">
+                <input class="input">
+            </div>`;
+            document.querySelector('body').insertAdjacentHTML
+            ('beforeend', template);
+        })
+    </script>
+<!-- 키보드 어떤 알파벳을 사용했는지 알려주는것 
+CSS 꾸미기
+예외상황 꾸미기
+실제 사용하는 단어만 쓰게끔
+답안은 어떻게 표출할건지
+답안을 랜덤으로 표출하기-->
+</body>
+</html>
