@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <a href="https://www.naver.com/">Go to naver.com</a>
+    <script>
+        const elem = document.querySelector('a');
+
+        elem.addEventListener('click', function(e){
+            console.log(e.cancelable);
+
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>

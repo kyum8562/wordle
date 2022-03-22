@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <ul id="post-list">
+        <li id="post-1">Item 1</li>
+    </ul>
+    <button id ='btn'>+</button>
+
+    <script>
+        const btn = document.querySelector('#btn');
+
+        function printId(e){
+            console.log(e.currentTarget.id);
+        }
+        function addLi(e){
+            var template = `<div>
+                <li id="post-1">Item 1</li>
+            </div>`;
+    document.querySelector('body').insertAdjacentHTML
+    ('beforeend', template);
+
+            
+        }
+        // for(var i = 1 ; i < 7 ; i ++){
+            document.querySelector(`#post-1`).addEventListener('click', printId);
+        // }
+
+        btn.addEventListener('click', addLi);
+    </script>
+</body>
+</html>

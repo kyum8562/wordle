@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0321 Test</title>
+</head>
+<body>
+    <!-- 
+        <button class="foo">click me</button>
+        <button onclick="myHandler()">ex1</button>
+        <button class="btn">ex2,3</button>
+        <br/>
+     -->
+    <label>User name <input type='text'></label>
+    <em class="message"></em>
+    <script>
+        /*
+        // 콜스택과 이벤트큐의 관계(with 이벤트 루프 : 콜스택이 비어있을 때 이벤트큐 내의 task가 순차적으로 콜스택으로 이동되어 실행된다)
+        // dom 이벤트 핸들러로 동일
+        function func1() {
+            console.log('func1');
+            func2();
+        }
+        function func2() {
+            const elem = document.querySelector('.foo');
+            
+            elem.addEventListener('click', function() {
+                this.style.backgroundColor = 'indigo';
+                this.style.color = 'white';
+                console.log('func2');
+            })
+            func3();
+        }
+        function func3() {
+            console.log('func3');
+        }
+        
+        func1();
+        // 인라인 이벤트 핸들러 방식 : 사용하지 않음
+        function myHandler() {
+            alert('button clicked');
+            console.log('inline eventH');
+        }
+
+
+        const btn = document.querySelector('.btn');
+
+        // 이벤트 핸들러 프로퍼티 방식은 이벤트에 하나의 이벤트 핸들러만을 바인딩할 수 있다
+        // 첫번째 바인딩된 이벤트 핸들러 => 실행되지 않는다.
+        btn.onclick = function () {
+        alert('① Button clicked 1');
+        console.log('eventH property');
+        };
+
+        // 두번째 바인딩된 이벤트 핸들러
+        btn.onclick = function () {
+        alert('① Button clicked 2');
+        console.log('eventH property');
+        };
+
+        // addEventListener 메소드 방식
+        // 첫번째 바인딩된 이벤트 핸들러
+        btn.addEventListener('click', function () {
+        alert('② Button clicked 1');
+        console.log('addEventListener method');
+        });
+
+        // 두번째 바인딩된 이벤트 핸들러
+        btn.addEventListener('click', function () {
+        alert('② Button clicked 2');
+        console.log('addEventListener method');
+        });
+        */
+        const input = document.querySelector('input[type=text]');
+        const msg = document.querySelector('.message');
+        const MIN_USER_NAME_LENGTH = 2; // 이름 최소길이
+
+        function checkUserNameLength(n) {
+            input.value.length < n ? (msg.innerHTML = '이름은 2자 이상 입력해주세요.') : (msg.innerHTML = '');
+        }
+
+        // input.addEventListener('blur',foo()); >> foo()이면 이벤트 발생 시까지 대기하지 않고 바로 실행된다.
+        // foo는 이벤트 발생시까지 대기한다.
+        input.addEventListener('blur', function (){
+            checkUserNameLength(MIN_USER_NAME_LENGTH);
+        }); 
+
+        </script>
+</body>
+</html>
