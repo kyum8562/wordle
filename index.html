@@ -1,46 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wordle</title>
     <link rel="stylesheet" href="./css/index.css" >
-
 </head>
 <body>
     <div>
-        <input type = 'text' class="input" maxlength ='1' onkeydown=moveFocus()>
-        <input type = 'text' class="input" name = "2" maxlength ='1'>
-        <input type = 'text' class="input" maxlength ='1'>
-        <input type = 'text' class="input" maxlength ='1'>
-        <input type = 'text' class="input" maxlength ='1'>
+        <em>대문자만 입력해주세요!</em> <br/>
+        <input type = 'text' class="input" id="input1" maxlength ='1'>
+        <input type = 'text' class="input" id="input2" maxlength ='1'>
+        <input type = 'text' class="input" id="input3" maxlength ='1'>
+        <input type = 'text' class="input" id="input4" maxlength ='1'>
+        <input type = 'text' class="input" id="input5" maxlength ='1'>
         <button class = "btn">제출</button>
     </div>
     <script>
         const btn = document.querySelector('.btn');
-        function moveFocus(e){
-            // keyCode가 'enter'일 때 이벤트 발생
-            // if(event.keyCode == 13){
-            //     document.getElementById(e).focus();
-            // }
+        const input = document.querySelectorAll('.input');
+
+        const input1 = document.querySelector('#input1');
+        const input2 = document.querySelector('#input2');
+        const input3 = document.querySelector('#input3');
+        const input4 = document.querySelector('#input4');
+        const input5 = document.querySelector('#input5');
+
+        for(var i = 1 ; i < input.length+1 ; i ++){
+            input1.addEventListener('keyup', function() {
+                if(this.value.length == 1) {
+                    input2.focus();
+                }
+            });
+            input2.addEventListener('keyup', function() {
+                if(this.value.length == 1) {
+                    input3.focus();
+                }
+            });
+            input3.addEventListener('keyup', function() {
+                if(this.value.length == 1) {
+                    input4.focus();
+                }
+            });
+            input4.addEventListener('keyup', function() {
+                if(this.value.length == 1) {
+                    input5.focus();
+                }
+            });
+            input5.addEventListener('keyup', function() {
+                if(this.value.length == 1) {
+                    btn.focus();
+                }
+            });
         }
 
-        btn.addEventListener('click', function() {
-            alert('addEventListener 메소드 방식');
-        });
     </script>
-
-
     <script src="./js/index.js" charset="utf-8"></script>
 </body>
 </html>
 
 <!-- 
 major
-
-공백일때 넘어가지 않게 하기
-한 칸에 하나의 알파벳만 넣을 수 있게하기
 실제 사용하는 단어만 쓰게끔
 답안은 어떻게 표출할건지
 답안을 랜덤으로 표출하기

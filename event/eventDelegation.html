@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <ul id="post-list">
-        <li id="post-1">Item 1</li>
-    </ul>
-    <button id ='btn'>+</button>
+  <ul class="post-list">
+    <li id="post-1">Item 1</li>
+    <li id="post-2">Item 2</li>
+    <li id="post-3">Item 3</li>
+    <li id="post-4">Item 4</li>
+    <li id="post-5">Item 5</li>
+    <li id="post-6">Item 6</li>
+  </ul>
+  <div class="msg">
+  <script>
+    const msg = document.querySelector('.msg');
+    const list = document.querySelector('.post-list')
 
-    <script>
-        const btn = document.querySelector('#btn');
+    list.addEventListener('click', function (e) {
+      // 이벤트를 발생시킨 요소
+      console.log('[target]: ' + e.target);
+      // 이벤트를 발생시킨 요소의 nodeName
+      console.log('[target.nodeName]: ' + e.target.nodeName);
 
-        function printId(e){
-            console.log(e.currentTarget.id);
-        }
-        function addLi(e){
-            var template = `<div>
-                <li id="post-1">Item 1</li>
-            </div>`;
-    document.querySelector('body').insertAdjacentHTML
-    ('beforeend', template);
-
-            
-        }
-        // for(var i = 1 ; i < 7 ; i ++){
-            document.querySelector(`#post-1`).addEventListener('click', printId);
-        // }
-
-        btn.addEventListener('click', addLi);
-    </script>
+      // li 요소 이외의 요소에서 발생한 이벤트는 대응하지 않는다.
+      if (e.target && e.target.nodeName === 'LI') {
+        msg.innerHTML = 'li#' + e.target.id + ' was clicked!';
+      }
+    });
+  </script>
 </body>
 </html>
